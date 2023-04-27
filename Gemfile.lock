@@ -40,6 +40,8 @@ GEM
     puma (6.2.2)
       nio4r (~> 2.0)
     rack (3.0.7)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
     rainbow (3.1.1)
@@ -84,12 +86,14 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-22
 
 DEPENDENCIES
   figaro
   http
   pry
   puma
+  rack-session
   rack-test
   rake
   rbnacl

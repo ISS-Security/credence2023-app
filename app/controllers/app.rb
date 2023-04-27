@@ -2,6 +2,7 @@
 
 require 'roda'
 require 'slim'
+require 'rack/session'
 
 module Credence
   # Base class for Credence Web Application

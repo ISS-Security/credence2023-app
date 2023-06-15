@@ -38,8 +38,9 @@ module Credence
     configure :production do
       use Rack::Session::Redis,
           expire_after: ONE_MONTH,
+          secure: true, # only possible on https:// requests
           httponly: true,
-          same_site: :strict,
+          same_site: :lax,
           redis_server: {
             url: ENV.delete('REDIS_TLS_URL'),
             ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
@@ -48,21 +49,20 @@ module Credence
 
     configure :development, :test do
       # use Rack::Session::Cookie,
-      #     expire_after: ONE_MONTH,
       #     secret: config.SESSION_SECRET,
+      #     expire_after: ONE_MONTH,
       #     httponly: true,
-      #     same_site: :strict
-
+      #     same_site: :lax
 
       use Rack::Session::Pool,
           expire_after: ONE_MONTH,
           httponly: true,
-          same_site: :strict
+          same_site: :lax
 
       # use Rack::Session::Redis,
       #     expire_after: ONE_MONTH,
       #     httponly: true,
-      #     same_site: :strict,
+      #     same_site: :lax,
       #     redis_server: {
       #       url: ENV.delete('REDIS_URL')
       #     }
